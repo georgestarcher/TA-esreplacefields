@@ -14,7 +14,7 @@ class ESReplaceFieldsCommand(StreamingCommand):
         for event in events:
             for fieldname in self.fieldnames:
                 fieldname = fieldname.strip()
-                if fieldname not in event: continue
+                if fieldname not in event.keys(): continue
                 tokenized_field = event.get(fieldname)
                 eventDict = dict(event)
                 retokenized_field =  re.sub(r"\$(\w+?)\$", r"{\1}", tokenized_field)
